@@ -1,2 +1,2 @@
-# tnt_hello_world
-Tarantool hello world application
+# Tarantool hello world application
+Demo site: http://tnt.topskill.pro/
