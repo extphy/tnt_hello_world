@@ -19,9 +19,12 @@ if (typeof jQuery === 'undefined') {
 
       this.$container.html('');
 
-      this.$statContainer = $('<div>', {
-         'class': 'stat-container'
-      }).appendTo(this.$container);
+      this.$statContainer = $('<div>')
+         .appendTo(this.$container);
+
+      $('<div>')
+         .appendTo(this.$container)
+         .text("see console for results");
 
       this.$runWriteBtn = $("<button>", {
       }).appendTo(this.$container);
@@ -110,6 +113,7 @@ if (typeof jQuery === 'undefined') {
 
       this.$runReadBtn.prop('disabled', true);
       this.$runWriteBtn.prop('disabled', true);
+      this.$truncBtn.prop('disabled', true);
 
       this.running = true;
       this.pending = 0;
@@ -123,9 +127,6 @@ if (typeof jQuery === 'undefined') {
       var printstat = (function() {
 
          if (this.count < this.max) {
-            if (this.count % 100 == 0) {
-               console.log("count=" + this.count + ", good=" + this.good + ", bad=" + this.bad);
-            }
             return this.pending < 30;
          }
          else if (this.pending < 1) {
@@ -136,6 +137,7 @@ if (typeof jQuery === 'undefined') {
 
             this.$runWriteBtn.prop('disabled', false);
             this.$runReadBtn.prop('disabled', false);
+            this.$truncBtn.prop('disabled', false);
 
             this.running = false;
 
